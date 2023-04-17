@@ -1,9 +1,18 @@
 import logger from '../../helpers/logger';
 
+export default function resolver() {
+const {db } = this;
+const { Person, Category } = db.models;
+
     const resolvers = {
+        Category: {
+            person(category, args, context) {
+                return category.getPerson()
+            }
+        },
        RootQuery: {
-        persons(root, args, context) {
-            return [];
+        people(root, args, context) {
+            return Person.findAll({order: [['createdAt', 'DESC']]});
         },
        },
 
@@ -21,5 +30,5 @@ import logger from '../../helpers/logger';
         }
        }
     };
-
-    export default resolvers;
+return resolvers;
+}

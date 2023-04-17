@@ -19,11 +19,10 @@ type Category {
 }
 
 type RootQuery {
-   persons: [Person!]! 
+   people: [Person!]! 
 }
 
 input PersonInput {
-    
     name: String!
     surname: String!
     tcId: Int

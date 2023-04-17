@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import configFile from "../config";
+import models from "../models";
 
 const env = 'development';
 const config = configFile[env];
@@ -12,6 +13,7 @@ const sequelize = new Sequelize(
 );
 
 const db = {
+    models: models(sequelize),
     sequelize,
 }
 
